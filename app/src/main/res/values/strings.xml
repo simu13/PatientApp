@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Patient Consulation App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="search">Search</string>
+    <string name="content_description_end_icon">Search Icon Text Field</string>
+    <string name="categories">Categories</string>
+    <string name="fresh_vegetables">Fresh Vegetables</string>
+    <string name="view_all">View All</string>
+    <string name="fresh_fruits">Fresh Fruits</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="please_sign_in_to_continue">Please sign in to continue</string>
+    <string name="email">Email</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="Sign_Up">Sign Up</string>
+    <string name="Sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="already_have_an_account">Already have an Account?</string>
+    <string name="price">Price</string>
+    <string name="amount">Amount</string>
+    <string name="broccoli">Broccoli</string>
+    <string name="iv_test">Image View Test</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
