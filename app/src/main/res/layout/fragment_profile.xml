@@ -73,7 +73,7 @@
                     android:id="@+id/et_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="mobile"
+                    android:hint="date of birth"
                     android:inputType="phone"
                     android:textSize="@dimen/et_text_size" />
 
