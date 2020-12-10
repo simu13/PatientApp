@@ -23,20 +23,23 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.hide()
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         root.signInButton.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_homeFragment_to_loginFragment)
+            if (FirebaseAuth.getInstance().currentUser?.uid != null)
+            {
+                view?.let {
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_homeFragment_to_mainFragment)
+                }
+            }
+            else {
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_homeFragment_to_loginFragment)
+            }
         }
         root.signUpButton.setOnClickListener {
             Navigation.findNavController(it)
                 .navigate(R.id.action_homeFragment_to_registerFragment)
         }
-        if (FirebaseAuth.getInstance().currentUser?.uid != null)
-        {
-            view?.let {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_homeFragment_to_mainFragment)
-            }
-        }
+
         return root
     }
 }
