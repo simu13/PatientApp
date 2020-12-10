@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/registerFragment">
+    app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.patientconsulationapp.ui.RegisterFragment"
@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -34,12 +37,12 @@
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment2"
-        android:name="com.example.patientconsulationapp.ProfileFragment"
-        android:label="ProfileFragment" />
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.patientconsulationapp.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.patientconsulationapp.ui.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
