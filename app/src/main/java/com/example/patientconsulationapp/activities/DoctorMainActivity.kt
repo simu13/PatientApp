@@ -1,4 +1,4 @@
-package com.example.patientconsulationapp
+package com.example.patientconsulationapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,11 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-
+import com.example.patientconsulationapp.R
 import com.google.android.material.navigation.NavigationView
 
-
-class MainActivity : AppCompatActivity(){
+class DoctorMainActivity : AppCompatActivity(){
 
     private var doubleBackToExitPressedOnce = false
     private lateinit var drawerLayout: DrawerLayout
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_patient_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity(){
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(
             this,
-           "Please Click Back Again to Exit",
+            "Please Click Back Again to Exit",
             Toast.LENGTH_SHORT
         ).show()
 
