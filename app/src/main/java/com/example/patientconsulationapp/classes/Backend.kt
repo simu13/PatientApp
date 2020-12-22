@@ -1,6 +1,9 @@
 package com.example.patientconsulationapp.classes
 
+import android.app.Activity
 import android.util.Log
+import androidx.fragment.app.Fragment
+import com.example.patientconsulationapp.AppointmentFragment
 import com.example.patientconsulationapp.model.User
 import com.example.patientconsulationapp.ui.ProfileFragment
 import com.example.patientconsulationapp.utils.Constants
@@ -17,14 +20,13 @@ class Backend
     // Create a instance of Firebase Firestore
     private val mFireStore = Firebase.firestore.collection("User")
 
-    fun registerUser(user: User){
+    fun registerUser(user: User) {
         GlobalScope.launch(Dispatchers.IO)
         {
             mFireStore.document(getCurrentUserID()).set(user).await()
         }
-
-
     }
+
     fun getCurrentUserID(): String {
         val currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserId = ""
@@ -33,6 +35,43 @@ class Backend
         }
         return currentUserId
 
+    }
+
+    fun loadUserData(activity: Fragment) {
+
+        // Here we pass the collection name from which we wants the data.
+        mFireStore
+            // The document id to get the Fields of user.
+            .document(getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.toString())
+
+                // Here we have received the document snapshot which is converted into the User Data model object.
+                val loggedInUser = document.toObject(User::class.java)!!
+
+                // Here call a function of base activity for transferring the result to it.
+                when (activity) {
+                    is AppointmentFragment -> {
+                        activity.setUserDataInUI(loggedInUser)
+                    }
+
+                }
+            }
+            .addOnFailureListener { e ->
+                // Here call a function of base activity for transferring the result to it.
+                when (activity) {
+                    is AppointmentFragment -> {
+
+                    }
+
+                }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while getting loggedIn user details",
+                    e
+                )
+            }
     }
 
     fun updateUserProfileData(activity: ProfileFragment, userHashMap: HashMap<String, Any>) {

@@ -39,6 +39,10 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(it)
                 .navigate(R.id.action_homeFragment_to_registerFragment)
         }
+        root.DoctorSignUpButton.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_homeFragment_to_doctorLoginFragment)
+        }
 
         return root
     }

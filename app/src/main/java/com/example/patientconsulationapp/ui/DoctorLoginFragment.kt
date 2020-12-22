@@ -18,7 +18,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 
-class LoginFragment : Fragment() {
+class DoctorLoginFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +46,14 @@ class LoginFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         val user = auth.currentUser
                         if (user!!.uid =="xBkSbml6qNetp0yasr0W4Vurigq1"||user!!.uid =="ODe0XJVlXgRcjkj21K7cmyrRKPR2") {
-                            auth.signOut()
-                            Toast.makeText(activity,"Invalid Details",Toast.LENGTH_SHORT).show()
-                        }
-                        else {
                             view?.let {
                                 Navigation.findNavController(it)
-                                    .navigate(R.id.action_loginFragment_to_mainFragment)
+                                    .navigate(R.id.action_doctorLoginFragment_to_profileFragment)
                             }
+                        }
+                        else {
+                            auth.signOut()
+                            Toast.makeText(activity,"Invalid Details",Toast.LENGTH_SHORT).show()
                         }
                     }
                 } catch (e: Exception) {
