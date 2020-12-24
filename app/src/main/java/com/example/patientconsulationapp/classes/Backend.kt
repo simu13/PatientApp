@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.patientconsulationapp.AppointmentFragment
 import com.example.patientconsulationapp.model.User
+import com.example.patientconsulationapp.ui.FinalFragment
 import com.example.patientconsulationapp.ui.ProfileFragment
 import com.example.patientconsulationapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -53,6 +54,9 @@ class Backend
                 // Here call a function of base activity for transferring the result to it.
                 when (activity) {
                     is AppointmentFragment -> {
+                        activity.setUserDataInUI(loggedInUser)
+                    }
+                    is FinalFragment -> {
                         activity.setUserDataInUI(loggedInUser)
                     }
 

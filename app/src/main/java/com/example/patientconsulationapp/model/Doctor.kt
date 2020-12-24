@@ -1,3 +1,5 @@
 package com.example.patientconsulationapp.model
 
-class Doctor(var name: String = "", var token:String="")
+import java.io.Serializable
+
+class Doctor(var name: String = "", var token:String="",var date:String="",var time:String=""):Serializable

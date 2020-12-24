@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.patientconsulationapp.R
 import kotlinx.android.synthetic.main.partial_time.view.*
@@ -31,7 +32,10 @@ class TimeAdapter(
         val item = list[position]
         holder.itemView.buttonTime.text = item
         holder.itemView.setOnClickListener {
-onItemClickListener?.let { it(item) }
+//onItemClickListener?.let { it(item) }
+            if (onItemClickListener == null){
+                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show()
+            }
         }
 
     }

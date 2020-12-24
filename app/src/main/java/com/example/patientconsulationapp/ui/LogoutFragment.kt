@@ -42,8 +42,7 @@ class LogoutFragment : Fragment() {
         {
             auth.signOut()
             view?.let {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_logoutFragment_to_homeFragment)
+                //Navigation.findNavController(it).navigate(R.id.action_logoutFragment_to_homeFragment)
             }
         }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.patientconsulationapp.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.example.patientconsulationapp.ui.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="com.example.patientconsulationapp.AppointmentFragment"
+        android:label="fragment_appointment"
+        tools:layout="@layout/fragment_appointment" >
+        <action
+            android:id="@+id/action_appointmentFragment_to_timeFragment"
+            app:destination="@id/timeFragment" />
+        <argument
+            android:name="doctor"
+            app:argType="com.example.patientconsulationapp.model.Doctor" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="com.example.patientconsulationapp.DoctorsFragment"
+        android:label="fragment_doctors"
+        tools:layout="@layout/fragment_doctors" >
+        <action
+            android:id="@+id/action_doctorsFragment_to_appointmentFragment"
+            app:destination="@id/appointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeFragment"
+        android:name="com.example.patientconsulationapp.ui.TimeFragment"
+        android:label="fragment_time"
+        tools:layout="@layout/fragment_time" >
+        <action
+            android:id="@+id/action_timeFragment_to_finalFragment"
+            app:destination="@id/finalFragment" />
+        <argument
+            android:name="doctor"
+            app:argType="com.example.patientconsulationapp.model.Doctor" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalFragment"
+        android:name="com.example.patientconsulationapp.ui.FinalFragment"
+        android:label="fragment_final"
+        tools:layout="@layout/fragment_final" >
+        <argument
+            android:name="doctor"
+            app:argType="com.example.patientconsulationapp.model.Doctor" />
+    </fragment>
+</navigation>

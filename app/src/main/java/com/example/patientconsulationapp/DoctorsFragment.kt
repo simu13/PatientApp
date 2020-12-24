@@ -30,7 +30,10 @@ class DoctorsFragment : Fragment(R.layout.fragment_doctors) {
             }
         }
         doctorAdapter.setOnItemClickListener {
-            findNavController().navigate(R.id.action_doctorsFragment_to_appointmentFragment)
+            val bundle = Bundle().apply {
+                putSerializable("doctor", it)
+            }
+            findNavController().navigate(R.id.action_doctorsFragment_to_appointmentFragment,bundle)
         }
     }
     private fun setupRecyclerView() {
