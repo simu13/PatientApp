@@ -1,20 +1,18 @@
 package com.example.patientconsulationapp.activities
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import com.example.patientconsulationapp.R
 import com.example.patientconsulationapp.classes.Backend
 import com.example.patientconsulationapp.model.User
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.android.synthetic.main.fragment_register.view.*
+import kotlinx.android.synthetic.main.activity_register.*
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +21,7 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(),View.OnClickListener {
     private val cal = Calendar.getInstance()
     private lateinit var auth: FirebaseAuth
     private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
@@ -41,18 +39,18 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         et_date.setOnClickListener(this)
-        signUp.setOnClickListener {
-            registerUser()
+        signUp.setOnClickListener {view ->
+            registerUser(view)
         }
         btn_tv_login.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_registerFragment_to_loginFragment)
+            startActivity(Intent(this,LoginActivity::class.java))
+            //Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
     }
 
-    private fun registerUser() {
-        val email = email.text.toString()
+    private fun registerUser(view:View) {
+        val email = name.text.toString()
         val password = password.text.toString()
         Log.i("Firebase", email)
         if (email.isNotEmpty() && password.isNotEmpty()) {
@@ -69,10 +67,9 @@ class RegisterActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         val user = auth.currentUser
                         user!!.sendEmailVerification()
-                        applicationContext?.let {
-                            Navigation.findNavController(applicationContext)
-                                .navigate(R.id.action_registerFragment_to_loginFragment)
-                        }
+startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
+                            //Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment)
+
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {

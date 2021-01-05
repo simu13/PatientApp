@@ -1,34 +1,28 @@
 package com.example.patientconsulationapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.appcompat.app.AppCompatActivity
 import com.example.patientconsulationapp.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
             signInButton.setOnClickListener {
-                if (FirebaseAuth.getInstance().currentUser?.uid != null) {
-                    view?.let {
-                        Navigation.findNavController(it)
-                            .navigate(R.id.action_homeFragment_to_mainFragment)
-                    }
-                } else {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_homeFragment_to_loginFragment)
-                }
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
             }
         signUpButton.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_homeFragment_to_registerFragment)
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        DoctorSignUpButton.setOnClickListener {
+            val intent = Intent(this,DoctorLoginActivity::class.java)
+            startActivity(intent)
         }
 
     }

@@ -1,15 +1,14 @@
 package com.example.patientconsulationapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import com.example.patientconsulationapp.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.activity_login.*
+
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,13 +23,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
             auth = FirebaseAuth.getInstance()
-           login.setOnClickListener {
-                loginUser()
+           login.setOnClickListener {view ->
+                loginUser(view)
             }
         }
-        private fun loginUser() {
+        private fun loginUser(view:View) {
             //Inserting the username in variable
-            val email = email.text.toString()
+            val email = name.text.toString()
             //Inserting the password in variable
             val password = password.text.toString()
             //Sending the arguments for authentication
@@ -40,18 +39,14 @@ class LoginActivity : AppCompatActivity() {
                         auth.signInWithEmailAndPassword(email, password).await()
                         withContext(Dispatchers.Main) {
                             val user = auth.currentUser
-                            if (user!!.isEmailVerified) {
-                                view?.let {
-                                    Navigation.findNavController(this)
-                                        .navigate(R.id.action_loginFragment_to_mainFragment)
-                                }
+                            if (user!!.uid =="xBkSbml6qNetp0yasr0W4Vurigq1"||user!!.uid =="ODe0XJVlXgRcjkj21K7cmyrRKPR2") {
+                                auth.signOut()
+                                Toast.makeText(this@LoginActivity,"Invalid Details",Toast.LENGTH_SHORT).show()
                             }
                             else {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Please Verify Your Email Address",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
+                                   startActivity(Intent(this@LoginActivity,PatientMainActivity::class.java))
+
                             }
                         }
                     } catch (e: Exception) {
