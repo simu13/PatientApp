@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.example.patientconsulationapp.R
 import com.example.patientconsulationapp.classes.Backend
 import com.example.patientconsulationapp.model.User
@@ -54,14 +53,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             registerUser()
         }
         root.btn_tv_login.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_registerFragment_to_loginFragment)
+            //Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
         }
         return root
     }
 
     private fun registerUser() {
-        val email = email.text.toString()
+        val email = name.text.toString()
         val password = password.text.toString()
         Log.i("Firebase", email)
         if (email.isNotEmpty() && password.isNotEmpty()) {
@@ -79,8 +77,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                         val user = auth.currentUser
                         user!!.sendEmailVerification()
                         view?.let {
-                            Navigation.findNavController(it)
-                                .navigate(R.id.action_registerFragment_to_loginFragment)
+                            //Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
                         }
                     }
                 } catch (e: Exception) {

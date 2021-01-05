@@ -26,18 +26,18 @@ class HomeFragment : Fragment() {
             if (FirebaseAuth.getInstance().currentUser?.uid != null)
             {
                 view?.let {
-                    Navigation.findNavController(it)
-                        .navigate(R.id.action_homeFragment_to_mainFragment)
+                    //Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_mainFragment)
                 }
             }
             else {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_homeFragment_to_loginFragment)
+                //Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_loginFragment)
             }
         }
         root.signUpButton.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_homeFragment_to_registerFragment)
+            //Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_registerFragment)
+        }
+        root.DoctorSignUpButton.setOnClickListener {
+            //Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_doctorLoginFragment)
         }
 
         return root

@@ -11,8 +11,7 @@
     android:paddingBottom="20dp">
 
 
-    <com.google.android.material.card.MaterialCardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <com.google.android.material.card.MaterialCardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,10 +37,9 @@
         android:id="@+id/name_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
         android:elevation="100dp"
-
         android:text="@string/app_name"
         android:textAlignment="textStart"
         android:textColor="@android:color/black"
@@ -76,6 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeWidth="1dp" />
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
@@ -92,24 +91,48 @@
         android:paddingEnd="20dp"
         android:paddingBottom="20dp"
         android:text="Sign up"
-        app:strokeWidth="1dp"
         android:textAllCaps="true"
         android:textSize="14sp"
         android:textStyle="bold"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeWidth="1dp" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:text="By joining you agree to our terms and conditions"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpButton">
 
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you a doctor" />
+
+
+        <TextView
+            android:id="@+id/DoctorSignUpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/tv"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:focusable="true"
+            android:text="@string/log_in"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
+
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
